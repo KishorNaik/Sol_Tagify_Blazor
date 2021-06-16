@@ -1,0 +1,37 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-lg-8">
+            <div class="form-group">
+
+                @*Using Bind*@
+                @*<TagifyComponent @ref="this.TagifyComponentRef" AllowDuplicates="false" PlaceHolder="Enter the Tags..." @bind-SelectedTags="this.SelectedTags"></TagifyComponent>*@
+
+                @*Using EventCallBack SelectTagsChanged Two way binding*@
+                @*<TagifyComponent @ref="this.TagifyComponentRef" AllowDuplicates="false" PlaceHolder="Enter the Tags..." SelectedTagsChanged="this.OnGetTags"></TagifyComponent>*@
+
+                @*Using EventCallBack OnHover without Two way binding*@
+                <TagifyComponent @ref="this.TagifyComponentRef" AllowDuplicates="false" PlaceHolder="Enter the Tags..." OnSelectTagsEvent="this.OnGetTags"></TagifyComponent>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 col-lg-8">
+            <button class="btn btn-success" @onclick="this.OnSubmit">Submit</button>
+        </div>
+    </div>
+    @if (SelectedTags?.Count >= 1)
+    {
+
+        <div class="row">
+            <div class="col-sm-8 col-lg-8">
+                <ul>
+                    @foreach (var tags in SelectedTags)
+                    {
+                        <li>@tags.value</li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+    }
+</div>
